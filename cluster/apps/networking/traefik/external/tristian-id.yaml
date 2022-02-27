@@ -30,7 +30,7 @@ spec:
   entryPoints:
     - https
   routes:
-    - match: Host(`tristian.id`)
+    - match: Host(`${SECRET_DOMAIN}`)
       kind: Rule
       priority: 1
       services:
