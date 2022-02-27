@@ -10,7 +10,7 @@ metadata:
     traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
 spec:
   type: ExternalName
-  externalName: "ur.${SECRET_DOMAIN}:3000"
+  externalName: "ur.${SECRET_DOMAIN}"
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
