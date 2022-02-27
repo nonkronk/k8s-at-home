@@ -1,20 +1,16 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: tristian-id
+  name: tristian
   namespace: default
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-production"
     hajimari.io/enable: "true"
-    hajimari.io/icon: "tristian-id"
+    hajimari.io/icon: "tristian"
     traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
 spec:
   type: ExternalName
-  ports:
-    - name: http
-      port: 3000
-      targetPort: 3000
-  externalName: "192.168.102.46"
+  externalName: "ur.${SECRET_DOMAIN}:3000"
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
@@ -24,7 +20,7 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-production"
     hajimari.io/enable: "true"
-    hajimari.io/icon: "tristian-id"
+    hajimari.io/icon: "tristian"
     traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
 spec:
   entryPoints:
@@ -34,7 +30,7 @@ spec:
       kind: Rule
       priority: 1
       services:
-        - name: tristian-id
+        - name: tristian
           port: 3000
   tls:
     secretName: tristian-id-tls
