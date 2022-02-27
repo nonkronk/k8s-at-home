@@ -30,7 +30,7 @@ spec:
   entryPoints:
     - https
   routes:
-    - match: Host(`cloud.tristian.id`)
+    - match: Host(`tristian.id`)
       kind: Rule
       priority: 1
       services:
